@@ -22,7 +22,7 @@ export function Home() {
         onChangeText={setNewSkill}
       />
 
-      <Button />
+      <Button onPress={handleAddNewSkill}/>
 
       <Text style={[styles.title, { marginVertical: 50 }]}>
         My Skills
@@ -30,7 +30,7 @@ export function Home() {
 
       {
         mySkills.map(skill => (
-          <SkillCard />
+          <SkillCard skill={skill}/>
         ))
       }
 
@@ -57,17 +57,5 @@ const styles = StyleSheet.create({
     padding: Platform.OS == 'ios' ? 15 : 10,
     marginTop: 30,
     borderRadius: 7
-  },
-  button: {
-    backgroundColor: '#A370F7',
-    padding: 15,
-    borderRadius: 7,
-    alignItems: 'center',
-    marginTop: 20
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 17,
-    fontWeight: 'bold'
   }
 });
