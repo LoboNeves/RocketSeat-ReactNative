@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, Platform, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TextInput, Platform } from "react-native";
+import { Button } from "../components/Button";
+import { SkillCard } from "../components/SkillCards";
 
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
@@ -20,13 +22,7 @@ export function Home() {
         onChangeText={setNewSkill}
       />
 
-      <TouchableOpacity
-        style={styles.button}
-        activeOpacity={.7}
-        onPress={handleAddNewSkill}
-      >
-        <Text style={styles.buttonText}>Add</Text>
-      </TouchableOpacity>
+      <Button />
 
       <Text style={[styles.title, { marginVertical: 50 }]}>
         My Skills
@@ -34,11 +30,7 @@ export function Home() {
 
       {
         mySkills.map(skill => (
-          <TouchableOpacity key={skill} style={styles.buttonSkill}>
-          <Text style={styles.textSkill}>
-            {skill}
-          </Text>
-        </TouchableOpacity>
+          <SkillCard />
         ))
       }
 
@@ -77,17 +69,5 @@ const styles = StyleSheet.create({
     color: '#FFF',
     fontSize: 17,
     fontWeight: 'bold'
-  },
-  buttonSkill: {
-    backgroundColor: '#1F1E25',
-    padding: 15,
-    borderRadius: 50,
-    alignItems: 'center',
-    marginVertical: 10
-  },
-  textSkill: {
-    color: '#FFF',
-    fontSize: 18,
-    fontWeight: 'bold',
   }
 });
